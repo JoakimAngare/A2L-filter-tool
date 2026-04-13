@@ -1,24 +1,24 @@
 # A2L Filter Tool
 
-Ett Python-verktyg för att filtrera A2L-filer baserat på en lista med signaler i CSV-format.
+A Python tool for filtering A2L files based on a list of signals in CSV format.
 
-## Vad verktyget gör
+## What the tool does
 
-- behåller endast valda `MEASUREMENT`
-- kan ta bort `GROUP`, `FUNCTION`, `CHARACTERISTIC` och `AXIS_PTS`
-- behåller endast använda `COMPU_METHOD` och `COMPU_VTAB`
-- kan verifiera att `MEASUREMENT`, `COMPU_METHOD` och `COMPU_VTAB` är identiska med originalet
-- har både CLI och GUI
-- GUI har både enkel körning och batchläge
+* keeps only selected `MEASUREMENT`
+* can remove `GROUP`, `FUNCTION`, `CHARACTERISTIC`, and `AXIS_PTS`
+* keeps only used `COMPU_METHOD` and `COMPU_VTAB`
+* can verify that `MEASUREMENT`, `COMPU_METHOD`, and `COMPU_VTAB` are identical to the original
+* includes both CLI and GUI
+* GUI supports both single run and batch mode
 
-## Krav
+## Requirements
 
-- Python 3.10+
-- inga externa paket behövs
+* Python 3.10+
+* no external packages required
 
 ## CLI
 
-Grundkommando:
+Basic command:
 
 ```bash
 python build_filtered_a2l.py input.a2l signals.csv output_filtered.a2l \
@@ -33,58 +33,59 @@ python build_filtered_a2l.py input.a2l signals.csv output_filtered.a2l \
 
 ## GUI
 
-Starta GUI:
+Start the GUI:
 
 ```bash
 python a2l_filter_gui.py
 ```
 
-På Windows kan du också dubbelklicka på:
+On Windows, you can also double-click:
 
 ```text
 Start_A2L_Filter_GUI.bat
 ```
 
-## Enkel körning i GUI
+## Single run in GUI
 
-1. välj input A2L
-2. välj input CSV
-3. välj output A2L
-4. klicka på `Kör jobb`
+1. select input A2L
+2. select input CSV
+3. select output A2L
+4. click `Run job`
 
-## Batchläge i GUI
+## Batch mode in GUI
 
-Batchläget används när du vill köra flera jobb i samma fönster.
+Batch mode is used when you want to run multiple jobs in the same window.
 
-1. öppna fliken `Batchläge`
-2. klicka på `Lägg till jobb`
-3. välj A2L, CSV och output-fil för varje jobb
-4. klicka på `Kör alla jobb`
+1. open the `Batch mode` tab
+2. click `Add job`
+3. select A2L, CSV, and output file for each job
+4. click `Run all jobs`
 
-Du kan också:
+You can also:
 
-- lägga till nuvarande enkel-körning i batch med `Lägg till i batch`
-- redigera markerat jobb
-- ta bort markerat jobb
-- rensa hela batchlistan
-- auto-generera output-namn med `Föreslå outputs`
+* add the current single run to batch with `Add to batch`
+* edit selected job
+* remove selected job
+* clear the entire batch list
+* auto-generate output names with `Suggest outputs`
 
-## Rekommenderade inställningar för CCP / IPEmotion
+## Recommended settings for CCP / IPEmotion
 
-- `Ignore case`
-- `Drop GROUP/FUNCTION`
-- `Drop CHARACTERISTIC`
-- `Drop AXIS_PTS`
-- `Prune COMPU_METHOD / COMPU_VTAB`
-- `Verify output`
-- `Create missing report next to output`
+* `Ignore case`
+* `Drop GROUP/FUNCTION`
+* `Drop CHARACTERISTIC`
+* `Drop AXIS_PTS`
+* `Prune COMPU_METHOD / COMPU_VTAB`
+* `Verify output`
+* `Create missing report next to output`
 
 ## Verify
 
-När `verify` är aktivt kontrolleras att det som påverkar mätdata inte har ändrats:
+When `verify` is enabled, it checks that elements affecting measurement data have not changed:
 
-- `MEASUREMENT`
-- `COMPU_METHOD`
-- `COMPU_VTAB`
+* `MEASUREMENT`
+* `COMPU_METHOD`
+* `COMPU_VTAB`
 
-Om verify misslyckas ska output-filen inte användas.
+If verification fails, the output file should not be used.
+
